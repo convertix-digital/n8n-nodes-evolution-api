@@ -138,6 +138,10 @@ Como já descrito, existe o campo de Opções, do qual você pode adicionar nova
   
 </details>
 <details>
+  <summary>✅ <b> Enviar Template ⭐</b></summary>
+  
+</details>
+<details>
   <summary>✅ <b> Enviar Status</b></summary>
   
 </details>
