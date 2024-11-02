@@ -7,7 +7,7 @@ import {
 
 export class HttpBinApi implements ICredentialType {
 	name = 'httpbinApi';
-	displayName = 'Evolution API';
+	displayName = 'Evolution API CTX';
 	documentationUrl = 'https://doc.evolution-api.com/pt';
 	properties: INodeProperties[] = [
 		{
