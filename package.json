@@ -1,19 +1,19 @@
 {
-  "name": "n8n-nodes-evolution-api",
-  "version": "0.2.72",
+  "name": "n8n-nodes-evolution-api-ctx",
+  "version": "0.2.73",
   "description": "Api não oficial do WhatsApp",
   "keywords": [
     "n8n-community-node-package"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https:",
   "author": {
-    "name": "OrionDesign",
-    "email": "contato@oriondesign.art.br"
+    "name": "Convertix",
+    "email": "contato@convertix.digital"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/oriondesign2015/n8n-nodes-evolution-api.git"
+    "url": "https://github.com/convertix-digital/n8n-nodes-evolution-api-ctx.git"
   },
   "engines": {
     "node": ">=18.10",
