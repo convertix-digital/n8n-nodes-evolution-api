@@ -207,6 +207,15 @@ export const httpVerbOperations: INodeProperties[] = [
 				value: 'sendTemplate',
 			},
 
+			// Opção = Enviar Figurinha
+			{
+				// Send Figurinha
+				name: 'Enviar Figurinha',
+				action: 'Enviar Figurinha',
+				description: 'Envia Figurinha de Imagem',
+				value: 'sendFigurinha',
+			},
+
 			// Opção = Enviar Status
 			{
 				// Send Status/Stories
