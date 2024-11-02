@@ -198,6 +198,15 @@ export const httpVerbOperations: INodeProperties[] = [
 				value: 'sendPoll',
 			},
 
+			// Opção = Enviar Template
+			{
+				// Send Template
+				name: 'Enviar Template',
+				action: 'Enviar Template',
+				description: 'Envia um template aprovado',
+				value: 'sendTemplate',
+			},
+
 			// Opção = Enviar Status
 			{
 				// Send Status/Stories
