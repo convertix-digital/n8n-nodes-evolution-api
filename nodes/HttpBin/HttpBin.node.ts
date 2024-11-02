@@ -372,6 +372,7 @@ export class HttpBin implements INodeType {
 			const remoteJid = this.getNodeParameter('remoteJid', 0);
 			const messageText = this.getNodeParameter('messageText', 0);
 			const mentionsEveryOne = this.getNodeParameter('mentionsEveryOne', 0);
+					const delay = this.getNodeParameter('delay', 0);
 
 			const options: IRequestOptions = {
 				method: 'POST' as IHttpRequestMethods,
@@ -384,6 +385,7 @@ export class HttpBin implements INodeType {
 					number: remoteJid,
 					text: messageText,
 					mentionsEveryOne: mentionsEveryOne,
+					delay: delay,
 				},
 				json: true,
 			};
@@ -402,6 +404,7 @@ export class HttpBin implements INodeType {
 			const caption = this.getNodeParameter('caption', 0);
 			// const fileName = this.getNodeParameter('fileName', 0);
 			const mentionsEveryOne = this.getNodeParameter('mentionsEveryOne', 0);
+			const delay = this.getNodeParameter('delay', 0);
 
 			const options: IRequestOptions = {
 				method: 'POST' as IHttpRequestMethods,
@@ -418,7 +421,37 @@ export class HttpBin implements INodeType {
 					caption: caption,
 					'fileName': '',
 					mentionsEveryOne: mentionsEveryOne,
+					delay: delay,
 
+				},
+				json: true,
+			};
+			responseData = await this.helpers.request(options);
+		}
+
+		// Enviar mensagem de Figurinha
+		if (resource === 'messages-api' && operation === 'sendImage') {
+			const credentials = await this.getCredentials('httpbinApi');
+			const serverUrl = credentials['server-url'];
+			const apiKey = credentials.apikey;
+			const instanceName = this.getNodeParameter('instanceName', 0);
+			const remoteJid = this.getNodeParameter('remoteJid', 0);
+			const sticker = this.getNodeParameter('sticker', 0);
+			const mentionsEveryOne = this.getNodeParameter('mentionsEveryOne', 0);
+			const delay = this.getNodeParameter('delay', 0);
+
+			const options: IRequestOptions = {
+				method: 'POST' as IHttpRequestMethods,
+				headers: {
+					'Content-Type': 'application/json',
+					apikey: apiKey,
+				},
+				uri: `${serverUrl}/message/sendMedia/${instanceName}`,
+				body: {
+					number: remoteJid,
+					sticker: sticker,
+					mentionsEveryOne: mentionsEveryOne,
+					delay: delay,
 				},
 				json: true,
 			};
@@ -437,6 +470,7 @@ export class HttpBin implements INodeType {
 			const caption = this.getNodeParameter('caption', 0);
 			// const fileName = this.getNodeParameter('fileName', 0);
 			const mentionsEveryOne = this.getNodeParameter('mentionsEveryOne', 0);
+			const delay = this.getNodeParameter('delay', 0);
 
 			const options: IRequestOptions = {
 				method: 'POST' as IHttpRequestMethods,
@@ -453,6 +487,7 @@ export class HttpBin implements INodeType {
 					caption: caption,
 					'fileName': '',
 					mentionsEveryOne: mentionsEveryOne,
+					delay: delay,
 				},
 				json: true,
 			};
@@ -468,6 +503,7 @@ export class HttpBin implements INodeType {
 			const remoteJid = this.getNodeParameter('remoteJid', 0);
 			const media = this.getNodeParameter('media', 0);
 			const mentionsEveryOne = this.getNodeParameter('mentionsEveryOne', 0);
+			const delay = this.getNodeParameter('delay', 0);
 
 			const options: IRequestOptions = {
 				method: 'POST' as IHttpRequestMethods,
@@ -480,6 +516,7 @@ export class HttpBin implements INodeType {
 					number: remoteJid,
 					audio: media,
 					mentionsEveryOne: mentionsEveryOne,
+					delay: delay,
 				},
 				json: true,
 			};
@@ -497,6 +534,7 @@ export class HttpBin implements INodeType {
 			const caption = this.getNodeParameter('caption', 0);
 			// const fileName = this.getNodeParameter('fileName', 0);
 			const mentionsEveryOne = this.getNodeParameter('mentionsEveryOne', 0);
+					delay: delay,
 
 			const options: IRequestOptions = {
 				method: 'POST' as IHttpRequestMethods,
@@ -512,6 +550,7 @@ export class HttpBin implements INodeType {
 					caption: caption,
 					'fileName': '',
 					mentionsEveryOne: mentionsEveryOne,
+					delay: delay,
 				},
 				json: true,
 			};
@@ -530,6 +569,7 @@ export class HttpBin implements INodeType {
 					const pollTitle = this.getNodeParameter('caption', 0);
 					const options = this.getNodeParameter('options_display.metadataValues', 0) as { optionValue: string }[];
 					const mentionsEveryOne = this.getNodeParameter('mentionsEveryOne', 0);
+					const delay = this.getNodeParameter('delay', 0);
 
 					// Verifica se options é um array e não está vazio
 					const pollOptions = Array.isArray(options) ? options.map(option => option.optionValue) : [];
@@ -546,6 +586,7 @@ export class HttpBin implements INodeType {
 									name: pollTitle,
 									selectableCount: 1,
 									mentionsEveryOne: mentionsEveryOne,
+									delay: delay,
 									values: pollOptions,
 							},
 							json: true,
@@ -567,9 +608,9 @@ export class HttpBin implements INodeType {
 
 					const instanceName = this.getNodeParameter('instanceName', 0);
 					const remoteJid = this.getNodeParameter('remoteJid', 0);
-					const templatetype = this.getNodeParameter('templateType', 0);
-					const templatesub_type = this.getNodeParameter('templateSub_type', 0);
-					const templateindex = this.getNodeParameter('templateIndex', 0);
+					const templateHeader = this.getNodeParameter('templateHeader', 0);
+					const templateBody = this.getNodeParameter('templateBody', 0);
+					const templateButton = this.getNodeParameter('templateButton', 0);
 					const params = this.getNodeParameter('templateparams_display.metadataValues', 0) as { typeValue: string, textValue: string }[];
 					const mentionsEveryOne = this.getNodeParameter('mentionsEveryOne', 0);
 
