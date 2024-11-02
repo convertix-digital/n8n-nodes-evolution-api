@@ -1358,6 +1358,19 @@ const messageOperation: INodeProperties[] = [
 			},
 		},
 	},
+	{
+		displayName: 'Enviar com Link Preview?',
+		name: 'linkPreview',
+		type: 'boolean',
+		default: false,
+		description: 'Link Preview na mensagem',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendText'],
+			},
+		},
+	},
 
 
 	// Campos = Enviar Imagem
@@ -1787,6 +1800,136 @@ const messageOperation: INodeProperties[] = [
 			show: {
 				resource: ['messages-api'],
 				operation: ['sendPoll'],
+			},
+		},
+	},
+	{
+		displayName: 'Enviar com Marcação Fantasma?',
+		name: 'mentionsEveryOne',
+		type: 'boolean',
+		default: false,
+		description: 'Whether to mention them all',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendPoll'],
+			},
+		},
+	},
+
+	// Campos = Enviar Template
+	{
+		displayName: 'Nome da Instância',
+		name: 'instanceName',
+		type: 'string',
+		default: '',
+		required: true,
+		description: 'Digite o nome da instância que vai enviar o template',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendTemplate'],
+			},
+		},
+	},
+	{
+		displayName: 'Número do Destinatário',
+		name: 'remoteJid',
+		type: 'string',
+		default: '',
+		required: true,
+		description: 'Número do destinatário',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendTemplate'],
+			},
+		},
+	},
+	{
+		displayName: 'Língua / Language',
+		name: 'language',
+		type: 'string',
+		default: 'pt_BR',
+		required: true,
+		description: 'Digite a língua do template',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendTemplate'],
+			},
+		},
+	},
+	{
+		displayName: 'Título',
+		name: 'header',
+		type: 'string',
+		default: '',
+		required: false,
+		description: 'Digite o Título do template',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendTemplate'],
+			},
+		},
+	},
+	{
+		displayName: 'Conteúdo',
+		name: 'body',
+		type: 'string',
+		default: '',
+		required: false,
+		description: 'Digite o Conteúdo do template',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendTemplate'],
+			},
+		},
+	},
+	{
+		displayName: 'Button',
+		name: 'button',
+		type: 'string',
+		default: '',
+		required: false,
+		description: 'Digite o Button do template',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendTemplate'],
+			},
+		},
+	},
+	{
+		displayName: 'Componentes',
+		name: 'params_display',
+		type: 'fixedCollection',
+		default: { metadataValues: [] },
+		required: true,
+		typeOptions: {
+			multipleValues: true,
+		},
+		description: 'Digite as opções da enquete (mínimo 2, máximo 12). Cada opção deve ser única.',
+		options: [
+			{
+				name: 'metadataValues',
+				displayName: 'Metadata',
+				values: [
+					{
+						displayName: 'Opção',
+						name: 'optionValue',
+						type: 'string',
+						default: '',
+					},
+				],
+			},
+		],
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendTemplate'],
 			},
 		},
 	},
