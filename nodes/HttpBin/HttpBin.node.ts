@@ -558,6 +558,55 @@ export class HttpBin implements INodeType {
 			}
 		}
 
+		// Enviar Template
+		if (resource === 'messages-api' && operation === 'sendTemplate') {
+			try {
+					const credentials = await this.getCredentials('httpbinApi');
+					const serverUrl = credentials['server-url'];
+					const apiKey = credentials.apikey;
+
+					const instanceName = this.getNodeParameter('instanceName', 0);
+					const remoteJid = this.getNodeParameter('remoteJid', 0);
+					const templatetype = this.getNodeParameter('templateType', 0);
+					const templatesub_type = this.getNodeParameter('templateSub_type', 0);
+					const templateindex = this.getNodeParameter('templateIndex', 0);
+					const params = this.getNodeParameter('templateparams_display.metadataValues', 0) as { typeValue: string, textValue: string }[];
+					const mentionsEveryOne = this.getNodeParameter('mentionsEveryOne', 0);
+
+					// Verifica se options é um array e não está vazio
+					const templateParams = Array.isArray(params) ? params.map(type => type.typeValue, text => text.textValue) : [];
+
+					const requestOptions: IRequestOptions = {
+							method: 'POST' as IHttpRequestMethods,
+							headers: {
+									'Content-Type': 'application/json',
+									apikey: apiKey,
+							},
+							uri: `${serverUrl}/message/sendTemplate/${instanceName}`,
+							body: {
+									number: remoteJid,
+									name: templateTitle,
+									components: [
+											    {
+											      type: templateType,
+											      sub_type: templateSub_type,
+											      index: templateIndex,
+											      parameters: templateParams
+											    }
+											  ]
+									selectableCount: 1,
+									mentionsEveryOne: mentionsEveryOne,
+							},
+							json: true,
+					};
+
+					responseData = await this.helpers.request(requestOptions);
+			} catch (error) {
+					// console.error('Erro ao enviar a enquete:', error);
+					throw new NodeApiError(this.getNode(), error); // Substitua aqui
+			}
+		}
+
 
 		// Enviar status
 		if (resource === 'messages-api' && operation === 'sendStories') {
