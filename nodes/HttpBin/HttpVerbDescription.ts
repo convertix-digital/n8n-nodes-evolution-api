@@ -201,7 +201,7 @@ export const httpVerbOperations: INodeProperties[] = [
 			// Opção = Enviar Template
 			{
 				// Send Template
-				name: 'Enviar Template',
+				name: 'Enviar Template (não funciona)',
 				action: 'Enviar Template',
 				description: 'Envia um template aprovado',
 				value: 'sendTemplate',
@@ -1346,6 +1346,19 @@ const messageOperation: INodeProperties[] = [
 		},
 	},
 	{
+		displayName: 'Delay',
+		name: 'delay',
+		type: 'integer',
+		default: false,
+		description: 'Presence time in milliseconds before sending message',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendText'],
+			},
+		},
+	},
+	{
 		displayName: 'Enviar com Marcação Fantasma?',
 		name: 'mentionsEveryOne',
 		type: 'boolean',
@@ -1459,6 +1472,19 @@ const messageOperation: INodeProperties[] = [
 	//	},
 	//},
 	{
+		displayName: 'Delay',
+		name: 'delay',
+		type: 'integer',
+		default: false,
+		description: 'Presence time in milliseconds before sending message',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendImage'],
+			},
+		},
+	},
+	{
 		displayName: 'Enviar com Marcação Fantasma?',
 		name: 'mentionsEveryOne',
 		type: 'boolean',
@@ -1559,6 +1585,19 @@ const messageOperation: INodeProperties[] = [
 	// 	},
 	// },
 	{
+		displayName: 'Delay',
+		name: 'delay',
+		type: 'integer',
+		default: false,
+		description: 'Presence time in milliseconds before sending message',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendVideo'],
+			},
+		},
+	},
+	{
 		displayName: 'Enviar com Marcação Fantasma?',
 		name: 'mentionsEveryOne',
 		type: 'boolean',
@@ -1609,6 +1648,19 @@ const messageOperation: INodeProperties[] = [
 		default: '',
 		required: true,
 		description: 'URL ou base64 do áudio',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendAudio'],
+			},
+		},
+	},
+	{
+		displayName: 'Delay',
+		name: 'delay',
+		type: 'integer',
+		default: false,
+		description: 'Presence time in milliseconds before sending message',
 		displayOptions: {
 			show: {
 				resource: ['messages-api'],
@@ -1688,20 +1740,33 @@ const messageOperation: INodeProperties[] = [
 			},
 		},
 	},
-	//{
-	//	displayName: 'Nome do Arquivo',
-	//	name: 'fileName',
-	//	type: 'string',
-	//	default: '',
-	//	required: false,
-	//	description: 'Nome do arquivo do vídeo',
-	//	displayOptions: {
-	//		show: {
-	//			resource: ['messages-api'],
-	//			operation: ['sendDocumento'],
-	//		},
-	//	},
-	//},
+	{
+		displayName: 'Nome do Arquivo',
+		name: 'fileName',
+		type: 'string',
+		default: '',
+		required: false,
+		description: 'Nome do arquivo do vídeo',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendDocumento'],
+			},
+		},
+	},
+	{
+		displayName: 'Delay',
+		name: 'delay',
+		type: 'integer',
+		default: false,
+		description: 'Presence time in milliseconds before sending message',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendDocumento'],
+			},
+		},
+	},
 	{
 		displayName: 'Enviar com Marcação Fantasma?',
 		name: 'mentionsEveryOne',
@@ -1804,6 +1869,19 @@ const messageOperation: INodeProperties[] = [
 		},
 	},
 	{
+		displayName: 'Delay',
+		name: 'delay',
+		type: 'integer',
+		default: false,
+		description: 'Presence time in milliseconds before sending message',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendPoll'],
+			},
+		},
+	},
+	{
 		displayName: 'Enviar com Marcação Fantasma?',
 		name: 'mentionsEveryOne',
 		type: 'boolean',
@@ -1813,6 +1891,76 @@ const messageOperation: INodeProperties[] = [
 			show: {
 				resource: ['messages-api'],
 				operation: ['sendPoll'],
+			},
+		},
+	},
+
+	// Campos = Enviar Figurinha
+	{
+		displayName: 'Nome da Instancia',
+		name: 'instanceName',
+		type: 'string',
+		default: '',
+		required: true,
+		description: 'Digite o nome da instância que vai enviar a Figurinha',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendFigurinha'],
+			},
+		},
+	},
+	{
+		displayName: 'Número do Destinatário',
+		name: 'remoteJid',
+		type: 'string',
+		default: '',
+		required: true,
+		description: 'Número do destinatário',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendFigurinha'],
+			},
+		},
+	},
+	{
+		displayName: 'Figurinha',
+		name: 'sticker',
+		type: 'string',
+		default: '',
+		required: true,
+		description: 'URL ou base64 da imagem',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendFigurinha'],
+			},
+		},
+	},
+	{
+		displayName: 'Enviar com Marcação Fantasma?',
+		name: 'mentionsEveryOne',
+		type: 'boolean',
+		default: false,
+		description: 'Whether to mention them all',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendFigurinha'],
+			},
+		},
+	},
+	{
+		displayName: 'Delay',
+		name: 'delay',
+		type: 'integer',
+		default: false,
+		description: 'Presence time in milliseconds before sending message',
+		displayOptions: {
+			show: {
+				resource: ['messages-api'],
+				operation: ['sendFigurinha'],
 			},
 		},
 	},
@@ -1862,7 +2010,7 @@ const messageOperation: INodeProperties[] = [
 	},
 	{
 		displayName: 'Título',
-		name: 'header',
+		name: 'templateHeader',
 		type: 'string',
 		default: '',
 		required: false,
@@ -1876,7 +2024,7 @@ const messageOperation: INodeProperties[] = [
 	},
 	{
 		displayName: 'Conteúdo',
-		name: 'body',
+		name: 'templateBody',
 		type: 'string',
 		default: '',
 		required: false,
@@ -1890,7 +2038,7 @@ const messageOperation: INodeProperties[] = [
 	},
 	{
 		displayName: 'Button',
-		name: 'button',
+		name: 'templateButton',
 		type: 'string',
 		default: '',
 		required: false,
